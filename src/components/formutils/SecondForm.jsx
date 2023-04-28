@@ -74,10 +74,10 @@ function SecondForm({ formik }) {
       <InputField
         label="Apply type"
         radioButtons={[
-          { value: "Quick apply", name: "applyType" },
-          { value: "External apply", name: "applyType" },
+          { value: "Quick Apply", name: "applyType" },
+          { value: "External Apply", name: "applyType" },
         ]}
-        value={formik.values.applyType}
+        applyType={formik.values.applyType}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         errorMessage={

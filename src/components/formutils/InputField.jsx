@@ -10,6 +10,7 @@ function InputField({
   label,
   onChange,
   value,
+  applyType,
   others,
 }) {
   return (
@@ -29,6 +30,7 @@ function InputField({
                 value={value}
                 name={name}
                 onChange={onChange}
+                applyType={applyType}
                 {...others}
               />
             );

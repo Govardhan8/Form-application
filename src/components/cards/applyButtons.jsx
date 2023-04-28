@@ -1,11 +1,15 @@
 import React from "react";
 import Button from "../formutils/Button";
 
-function ApplyButtons() {
+function ApplyButtons({ applyType }) {
   return (
     <div className="flex gap-6">
-      <Button>Apply Now</Button>
-      <Button invert>External Apply</Button>
+      {applyType.toLowerCase() !== "external apply" && (
+        <Button>Apply Now</Button>
+      )}
+      {applyType.toLowerCase() !== "quick apply" && (
+        <Button invert>External Apply</Button>
+      )}
     </div>
   );
 }

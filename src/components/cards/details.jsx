@@ -8,7 +8,7 @@ function Details({ data }) {
     <div className="flex flex-col justify-between gap-y-6">
       <CompanyDetails {...data} />
       <RoleDetails {...data} />
-      <ApplyButtons />
+      <ApplyButtons {...data} />
     </div>
   );
 }
