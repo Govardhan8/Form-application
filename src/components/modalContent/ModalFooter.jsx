@@ -1,15 +1,16 @@
 import React from "react";
+import Button from "../formutils/Button";
 
 function ModalFooter({ isFinalStep, handleSubmit }) {
   return (
     <div className="flex justify-end">
-      <button
+      <Button
         onClick={handleSubmit}
         type="submit"
-        className="absolute bottom-0 right-0 bg-primary text-modal-white px-4 py-2 rounded-md"
+        customCss="absolute bottom-0 right-0"
       >
         {isFinalStep ? "Save" : "Next"}
-      </button>
+      </Button>
     </div>
   );
 }

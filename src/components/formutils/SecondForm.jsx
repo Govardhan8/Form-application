@@ -61,7 +61,6 @@ function SecondForm({ formik }) {
       <InputField
         label="Total employee"
         name="totalEmployees"
-        required
         placeholder="ex. 100"
         value={formik.values.totalEmployees}
         onChange={formik.handleChange}

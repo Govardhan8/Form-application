@@ -2,7 +2,7 @@ import React from "react";
 
 function Label({ name }) {
   return (
-    <label htmlFor={name} className="text-holder-gray text-sm pl-1">
+    <label htmlFor={name} className="text-secondary-gray text-sm pl-1">
       {name}
     </label>
   );

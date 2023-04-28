@@ -4,13 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        "modal-white": "#FFFFFF",
-        "border-gray": "#E6E6E6",
-        primary: "#1597E4D4",
+        "primary-white": "#FFFFFF",
+        "primary-gray": "#E6E6E6",
+        "primary-blue": "#1597E4D4",
         "primary-black": "#182021",
-        "error-red": "#D86161",
-        "holder-gray": "#7A7A7A",
+        "primary-red": "#D86161",
         "primary-background": "#D8D8D8",
+        "secondary-gray": "#7A7A7A",
+        "secondary-black": "#212427",
       },
     },
   },

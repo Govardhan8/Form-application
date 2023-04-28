@@ -16,7 +16,7 @@ function InputField({
       {label && (
         <label htmlFor={name} className="pb-1">
           {label}
-          {required && <span className="text-error-red">*</span>}
+          {required && <span className="text-primary-red">*</span>}
         </label>
       )}
       {radioButtons ? (
@@ -36,7 +36,7 @@ function InputField({
       ) : (
         <input
           name={name}
-          className="border border-border-gray text-holder-gray rounded-[5px] px-3 py-2 text-sm"
+          className="border border-primary-gray text-secondary-gray rounded-[5px] px-3 py-2 text-sm"
           placeholder={placeholder}
           type="text"
           onChange={onChange}
@@ -44,7 +44,7 @@ function InputField({
         />
       )}
       {errorMessage && (
-        <span className="text-error-red text-xs">{errorMessage}</span>
+        <span className="text-primary-red text-xs">{errorMessage}</span>
       )}
     </div>
   );
