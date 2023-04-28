@@ -9,6 +9,7 @@ function InputField({
   radioButtons,
   label,
   onChange,
+  value,
   others,
 }) {
   return (
@@ -40,6 +41,7 @@ function InputField({
           placeholder={placeholder}
           type="text"
           onChange={onChange}
+          value={value}
           {...others}
         />
       )}

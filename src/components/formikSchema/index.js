@@ -12,8 +12,6 @@ export const firstFormSchema = {
     jobTitle: Yup.string().required("Job Title is required"),
     company: Yup.string().required("Company name is required"),
     industry: Yup.string().required("Industry is required"),
-    location: Yup.string().required("Location is required"),
-    remotetype: Yup.string().required("Remote type is required"),
   }),
 };
 

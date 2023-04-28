@@ -11,17 +11,14 @@ const initialState = {
   isFinalStep: false,
   isModalOpen: false,
   secondFormData: {
-    experience: {
-      minimum: "",
-      maximum: "",
-    },
-    salary: {
-      minimum: "",
-      maximum: "",
-    },
-    employees: "",
+    minExperience: "",
+    maxExperience: "",
+    minSalary: "",
+    maxSalary: "",
+    totalEmployees: "",
     applyType: "",
   },
+  updateId: "",
 };
 
 export const formSlice = createSlice({
@@ -30,6 +27,8 @@ export const formSlice = createSlice({
   reducers: {
     updateFirstFormData: (state, action) => {
       state.firstFormData = action.payload;
+    },
+    updateFinalStep: (state) => {
       state.isFinalStep = true;
     },
     reset: (state) => {
@@ -41,6 +40,9 @@ export const formSlice = createSlice({
     updateSecondFormData: (state, action) => {
       state.secondFormData = action.payload;
     },
+    updateId: (state, action) => {
+      state.updateId = action.payload;
+    },
   },
 });
 
@@ -50,6 +52,8 @@ export const {
   reset,
   updateSecondFormData,
   setModalState,
+  updateFinalStep,
+  updateId,
 } = formSlice.actions;
 
 export default formSlice.reducer;

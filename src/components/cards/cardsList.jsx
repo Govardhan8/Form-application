@@ -1,11 +1,11 @@
 import React from "react";
 import Card from "./card";
 
-function cardsList({ data }) {
+function cardsList({ data, updateData }) {
   return (
     <div className="flex flex-wrap gap-20">
       {data.map((cardData, index) => {
-        return <Card key={index} data={cardData} />;
+        return <Card key={index} data={cardData} updateData={updateData} />;
       })}
     </div>
   );

@@ -1,57 +1,49 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import ModalHeader from "./ModalHeader";
 import ModalFooter from "./ModalFooter";
 import FormBody from "../formutils/FormBody";
 import { useFormik } from "formik";
-import { firstFormSchema, secondFormSchema } from "../formikSchema";
+import { firstFormSchema } from "../formikSchema";
 import {
   updateFirstFormData,
   updateSecondFormData,
   reset,
+  updateFinalStep,
 } from "../../slices/formSlice";
+import { postData, updateDataById } from "../api";
 
 function ModalContent({ updateData }) {
-  const { isFinalStep } = useSelector((state) => state.form);
+  const { firstFormData, isFinalStep, secondFormData, updateId } = useSelector(
+    (state) => state.form
+  );
   const dispatch = useDispatch();
-  const formSchema = isFinalStep ? secondFormSchema : firstFormSchema;
-  const postData = async (e) => {
-    await axios
-      .post("https://614b02a3e4cc2900179eae54.mockapi.io/job", e)
-      .then(function (response) {
-        updateData();
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  const initialValues = { ...firstFormData, ...secondFormData };
+
   const formik = useFormik({
-    initialValues: formSchema.initialValues,
-    validationSchema: formSchema.schema,
+    initialValues: initialValues,
+    //Since there is no mandatory field in second step, no need to validate the inputs
+    validationSchema: firstFormSchema.schema,
     onSubmit: (e) => {
       e.preventDefault;
-      console.log({ e });
       if (isFinalStep) {
         dispatch(
           updateSecondFormData({
-            experience: {
-              minimum: e.minExperience,
-              maximum: e.maxExperience,
-            },
-            salary: {
-              minimum: e.minSalary,
-              maximum: e.maxSalary,
-            },
-            employees: e.totalEmployees,
+            minExperience: e.minExperience,
+            maxExperience: e.maxExperience,
+            minSalary: e.minSalary,
+            maxSalary: e.maxSalary,
+            totalEmployees: e.totalEmployees,
             applyType: e.applyType,
           })
         );
-        postData(e);
+        updateId
+          ? updateDataById(e, updateId).then(() => updateData())
+          : postData(e).then(() => updateData());
         dispatch(reset());
       } else {
         dispatch(updateFirstFormData(e));
+        dispatch(updateFinalStep());
       }
     },
   });
