@@ -12,7 +12,7 @@ import {
   reset,
 } from "../../slices/formSlice";
 
-function ModalContent({ onClose }) {
+function ModalContent({ updateData }) {
   const { isFinalStep } = useSelector((state) => state.form);
   const dispatch = useDispatch();
   const formSchema = isFinalStep ? secondFormSchema : firstFormSchema;
@@ -20,6 +20,7 @@ function ModalContent({ onClose }) {
     await axios
       .post("https://614b02a3e4cc2900179eae54.mockapi.io/job", e)
       .then(function (response) {
+        updateData();
         console.log(response);
       })
       .catch(function (error) {
@@ -33,9 +34,21 @@ function ModalContent({ onClose }) {
       e.preventDefault;
       console.log({ e });
       if (isFinalStep) {
-        dispatch(updateSecondFormData(e));
+        dispatch(
+          updateSecondFormData({
+            experience: {
+              minimum: e.minExperience,
+              maximum: e.maxExperience,
+            },
+            salary: {
+              minimum: e.minSalary,
+              maximum: e.maxSalary,
+            },
+            employees: e.totalEmployees,
+            applyType: e.applyType,
+          })
+        );
         postData(e);
-        onClose();
         dispatch(reset());
       } else {
         dispatch(updateFirstFormData(e));

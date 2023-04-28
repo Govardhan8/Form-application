@@ -9,6 +9,7 @@ const initialState = {
     remotetype: "",
   },
   isFinalStep: false,
+  isModalOpen: false,
   secondFormData: {
     experience: {
       minimum: "",
@@ -32,7 +33,10 @@ export const formSlice = createSlice({
       state.isFinalStep = true;
     },
     reset: (state) => {
-      state = initialState;
+      Object.assign(state, initialState);
+    },
+    setModalState: (state, action) => {
+      state.isModalOpen = action.payload;
     },
     updateSecondFormData: (state, action) => {
       state.secondFormData = action.payload;
@@ -41,7 +45,11 @@ export const formSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateFirstFormData, reset, updateSecondFormData } =
-  formSlice.actions;
+export const {
+  updateFirstFormData,
+  reset,
+  updateSecondFormData,
+  setModalState,
+} = formSlice.actions;
 
 export default formSlice.reducer;
