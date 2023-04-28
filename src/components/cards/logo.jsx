@@ -1,10 +1,11 @@
 import React from "react";
+import logo from "../../assets/logo.jpg";
 
-function logo() {
+function Logo() {
   return (
     <>
       <img
-        src={"src/assets/logo.png"}
+        src={logo}
         alt={"logo"}
         className="aspect-square h-12 rounded-[5px] object-contain"
       />
@@ -12,4 +13,4 @@ function logo() {
   );
 }
 
-export default logo;
+export default Logo;
