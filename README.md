@@ -1,4 +1,4 @@
-# Great-vibes-form
+# Simple-Form-Application
 
 The application was created using vite.<br/>
 
